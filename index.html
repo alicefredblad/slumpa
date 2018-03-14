@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet" type="text/css">
+<title>Slumpa</title>
+</head>
+
+<body>
+<h1>Slumpa!</h1>
+ <div class="inputSection">
+      <div class="inputs">
+        <input placeholder="Something">
+      </div>
+      <button class="addOption">Add</button>
+    </div>
+    <div class="resultSection"></div>
+    <button class="submit">Go!</button>
+<input type="button" value="Refresh Page" onClick="window.location.reload()" class="refresh">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+      $(function() {
+         $('.refresh').hide()  
+        $('.resultSection').hide()
+        var add_option = function() {
+          $('.inputs').append('<input></input>')
+        }
+        $('.addOption').click(add_option)
+        var options = []
+        var submit = function() {
+          $('.inputSection').hide()
+            $('.submit').hide()
+            $('.refresh').show()
+          $('.resultSection').css('display', 'flex')
+          $('input').each(function() {
+            options.push($(this).val())
+          })
+          var winner = options[Math.floor(Math.random() * options.length)]
+          console.log(winner)
+          $('.resultSection').text(winner)
+        }
+        $('.submit').click(submit)
+          
+       
+          
+          
+      })
+    </script>
+</body>
+
+</html>
